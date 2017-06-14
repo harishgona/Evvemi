@@ -1,19 +1,14 @@
-# http://werkzeug.pocoo.org/docs/0.11/test/#werkzeug.test.Client
-# http://flask.pocoo.org/docs/0.10/api/#test-client
-
 import unittest
 import os
 import sys
 import json
 
-# Add app path to module path
 sys.path.append(os.path.dirname(os.path.realpath(__file__).rsplit('/', 2)[0]))
 from app import create_app
-#from app.courses.models import Courses
 
 
 app = create_app('config')
-add_data = """{
+add_data = {
   "data": {
     "attributes":
 
@@ -23,9 +18,9 @@ add_data = """{
     "type": "courses"
   }
 
-}"""
+}
 
-update_data = """{
+update_data = {
   "data": {
     "attributes":
 
@@ -33,7 +28,7 @@ update_data = """{
     "type": "courses"
   }
 
-}"""
+}
 
 
 class TestCourses(unittest.TestCase):

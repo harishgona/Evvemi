@@ -6,23 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-bind="$state.current.title + ' | Evvemi'"> </title>
 
-  <!-- CSS -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/dashboard.css" rel="stylesheet">
     <link href="static/css/font-awesome.min.css" rel="stylesheet">
     <link href="static/node_modules/angular-datatables/dist/css/angular-datatables.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.15/toaster.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.15/toaster.min.css" rel="stylesheet"/>
 
-   <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script src ="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> </script>
+    <script src ="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"> </script>
     <script src="static/node_modules/angular/angular.min.js"></script>
     <script src="static/node_modules/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
     <script src="static/node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
 
 
     <script type="text/javascript" src="static/js/app.js"></script>
-    <!-- Controllers -->
+   
     <script type="text/javascript" src="courses/controllers.js"></script>
     <script type="text/javascript" src="students/controllers.js"></script>
     <script type="text/javascript" src="static/node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -33,33 +31,22 @@
     <script src="static/node_modules/angular-google-analytics/dist/angular-google-analytics.js"></script>
 
   </head>
-<body>
-  <toaster-container></toaster-container>
+  <body>
+    <toaster-container></toaster-container>
 
  
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-                              <!-- menu -->
-             <li><a ui-sref="courses.list" id="courses_menu" >Courses</a></li>
-             <li><a ui-sref="students.list" id="students_menu" >Students</a></li>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+               <li><a ui-sref="courses.list" id="courses_menu" >Courses</a></li>
+               <li><a ui-sref="students.list" id="students_menu" >Students</a></li>
+          </ul>
+        </div>
 
-
-        </ul>
-
-
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ui-view></div>
       </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ui-view>
-
-
-            </div>
-            </div>
-          </div>
-
-
-
+    </div>
   </body>
 </html>

@@ -1,4 +1,3 @@
-// spec.js
 describe('Testing Courses CRUD Module', function() {
 
 var Course = function() {
@@ -12,11 +11,11 @@ var Course = function() {
                                        };
 
         this.toast = function(message){
-                                        $('.btn.btn-primary').click()  // css selectors http://angular.github.io/protractor/#/api?view=build$
+                                        $('.btn.btn-primary').click() 
                                             .then(function() {
                                                   var EC = protractor.ExpectedConditions;
                                                   var toastMessage = $('.toast-message');
-                                                  browser.wait(EC.visibilityOf(toastMessage), 6000) //wait until toast is displayed
+                                                  browser.wait(EC.visibilityOf(toastMessage), 6000) 
                                                              .then(function(){
                                                                     expect(toastMessage.getText()).toBe(message);
 
@@ -25,48 +24,37 @@ var Course = function() {
                                     }
                     };
 
-it('Should add a new Course', function() {
+it('Add Course', function() {
 
     var course = new Course();
 
-    // Get courses URL
     course.get();
 
-    // Goto the new menu
     element(by.linkText('Courses')).click();
     element(by.linkText('New')).click();
 
-    // Fill in the Fields
-    
-        course.setcoursename("Your Title text here");
+    course.setcoursename("");
 
-    //Expectations
     course.toast("Course saved successfully");
 
-  });
+});
 
-it('Should  edit a Course', function() {
+it('Edit Course', function() {
 
     var course = new Course();
 
     course.get();
-
-    //Goto the edit menu
     element(by.linkText('Courses')).click();
-     element(by.id('editButton')).click();
+    element(by.id('editButton')).click();
 
-    // Fill in the fields
-    
-        course.setcoursename("Your Updated Title text here");
-
-    //Expectations
+    course.setcoursename("");
     course.toast("Update was a success");
 
 
 
 });
 
-it('Should  delete a Course', function() {
+it('Delete Course', function() {
     browser.get('http://localhost:5000/');
     element(by.linkText('Courses')).click();
     element(by.id('deleteButton')).click()
@@ -76,14 +64,14 @@ it('Should  delete a Course', function() {
         var EC = protractor.ExpectedConditions;
         var toastMessage = $('.toast-message');
 
-         browser.wait(EC.visibilityOf(toastMessage), 60) //wait until toast is displayed
+         browser.wait(EC.visibilityOf(toastMessage), 60)
             .then(function(){
 
                 expect(toastMessage.getText()).toBe("Course deleted successfully")
 
-      });
+            });
 
+    });
   });
+
 });
-
-  });

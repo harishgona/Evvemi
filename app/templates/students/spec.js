@@ -21,11 +21,11 @@ var Student = function() {
                                        };
 
         this.toast = function(message){
-                                        $('.btn.btn-primary').click()  // css selectors http://angular.github.io/protractor/#/api?view=build$
+                                        $('.btn.btn-primary').click()  
                                             .then(function() {
                                                   var EC = protractor.ExpectedConditions;
                                                   var toastMessage = $('.toast-message');
-                                                  browser.wait(EC.visibilityOf(toastMessage), 6000) //wait until toast is displayed
+                                                  browser.wait(EC.visibilityOf(toastMessage), 6000) 
                                                              .then(function(){
                                                                     expect(toastMessage.getText()).toBe(message);
 
@@ -34,70 +34,58 @@ var Student = function() {
                                     }
                     };
 
-it('Should add a new Student', function() {
+  it('Should add a new Student', function() {
 
     var student = new Student();
-
-    // Get students URL
     student.get();
 
-    // Goto the new menu
     element(by.linkText('Students')).click();
     element(by.linkText('New')).click();
+      
+    student.setStudent_Name("Student Name");
+    student.setDegree("Degree");
+    student.setMajor("Major");
+    student.setCourses("Courses");
 
-    // Fill in the Fields
-    
-        student.setStudent_Name("Student Name");
-        student.setDegree("Degree");
-        student.setMajor("Major");
-        student.setCourses("Courses");
-
-    //Expectations
     student.toast("Student saved successfully");
 
   });
 
-it('Should  edit a Student', function() {
+  it('Should  edit a Student', function() {
 
-    var student = new Student();
+      var student = new Student();
 
-    student.get();
-
-    //Goto the edit menu
-    element(by.linkText('Students')).click();
-     element(by.id('editButton')).click();
-
-    // Fill in the fields
-    
-        student.setStudent_Name("Your Updated Title text here");
-        student.setDegree("Your Updated Title text here");
-        student.setMajor("Your Updated Title text here");
-        post.setCourses("Your Updated Title text here");
-    //Expectations
-    student.toast("Update was a success");
+      student.get();
+      element(by.linkText('Students')).click();
+      element(by.id('editButton')).click();
+      student.setStudent_Name("");
+      student.setDegree("");
+      student.setMajor("");
+      post.setCourses("");
+      student.toast("Update was a success");
 
 
-
-});
-
-it('Should  delete a Student', function() {
-    browser.get('http://localhost:5000/');
-    element(by.linkText('Students')).click();
-    element(by.id('deleteButton')).click()
-
-    .then(function(){
-
-        var EC = protractor.ExpectedConditions;
-        var toastMessage = $('.toast-message');
-
-         browser.wait(EC.visibilityOf(toastMessage), 60) //wait until toast is displayed
-            .then(function(){
-
-                expect(toastMessage.getText()).toBe("Student deleted successfully")
-
-      });
 
   });
-});
 
+  it('Should  delete a Student', function() {
+      browser.get('http://localhost:5000/');
+      element(by.linkText('Students')).click();
+      element(by.id('deleteButton')).click()
+
+      .then(function(){
+
+          var EC = protractor.ExpectedConditions;
+          var toastMessage = $('.toast-message');
+
+           browser.wait(EC.visibilityOf(toastMessage), 60) 
+              .then(function(){
+
+                  expect(toastMessage.getText()).toBe("Student deleted successfully")
+
+        });
+
+    });
   });
+
+});

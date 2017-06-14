@@ -34,14 +34,12 @@ class Students(db.Model, CRUD_MixIn):
 class StudentsSchema(Schema):
 
     not_blank = validate.Length(min=1, error='Field cannot be blank')
-    # add validate=not_blank in required fields
     id = fields.Integer(dump_only=True)
 
     studentname = fields.String(validate=not_blank)
     degree = fields.String(validate=not_blank)
     major = fields.String(validate=not_blank)
     courseids = fields.Raw()
-    # self links
     def get_top_level_links(self, data, many):
         if many:
             self_link = "/students/"
