@@ -11,6 +11,9 @@ var Student = function() {
         
         var major = element(by.id('major'));
         this.setMajor = function(majorText) { major.clear(); major.sendKeys(majorText); };
+
+        var courses = element(by.id('courses'));
+        this.setCourses = function(coursesText) { courses.clear(); courses.sendKeys(coursesText); };
         
 
         this.get = function() {
@@ -44,9 +47,10 @@ it('Should add a new Student', function() {
 
     // Fill in the Fields
     
-        student.setStudent_Name("Your Title text here");
-        student.setDegree("Your Title text here");
-        student.setMajor("Your Title text here");
+        student.setStudent_Name("Student Name");
+        student.setDegree("Degree");
+        student.setMajor("Major");
+        student.setCourses("Courses");
 
     //Expectations
     student.toast("Student saved successfully");
@@ -68,7 +72,7 @@ it('Should  edit a Student', function() {
         student.setStudent_Name("Your Updated Title text here");
         student.setDegree("Your Updated Title text here");
         student.setMajor("Your Updated Title text here");
-
+        post.setCourses("Your Updated Title text here");
     //Expectations
     student.toast("Update was a success");
 
