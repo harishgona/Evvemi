@@ -1,0 +1,25 @@
+<a class="btn btn-default pull-right btn-primary" ui-sref="courses.new" role="button">New</a>
+
+<table class="table table-bordered">
+
+
+       <thead>
+         <th>ID</th>
+         
+                         <th>coursename</th>
+          <th>Actions</th>
+
+
+        </thead>
+        <tbody>
+        <tr ng-repeat=" course in courses">
+            <td>{{ course.id  }}</td> 
+            
+                         <td>{{ course.coursename }}</td>
+            <td><a ui-sref="courses.edit({id:course.id })" class="btn btn-default btn-warning" role="button"  id="editButton"><i class="fa fa-edit"></i></a>
+            <button class="btn btn-default btn-danger" ng-click="deleteCourse(course.id)" id="deleteButton"><i class="fa fa-trash-o"></i></button>
+            </td>
+        </tr>
+        </tbody>
+
+</table>
